@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      What to eat ?
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">What to eat ?</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select (ionChange)="loadData($event)" placeholder="Select One">
+        <ion-select-option [value]="categorie.strCategory" *ngFor="let categorie of categories">{{ categorie.strCategory }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  <ion-grid *ngIf="meals">
+    <ion-row>
+      <ion-col *ngFor="let meal of meals" size="6" [routerLink]="['/meal',meal.idMeal]">
+        <img [src]="meal.strMealThumb">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

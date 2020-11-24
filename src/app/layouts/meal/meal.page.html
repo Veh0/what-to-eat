@@ -1,0 +1,34 @@
+<ng-container *ngIf="meal$ | async as meal">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-icon name="arrow-back-outline" routerLink="/home"></ion-icon>
+      <ion-title>{{ meal.strMeal }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+
+    <ion-item lines="none">
+      <h1>{{ meal.strMeal }} <ion-badge color="secondary">{{ meal.strCategory }}</ion-badge></h1>
+    </ion-item>
+
+    <iframe id="ytplayer" width="100%" height="360" [src]="getYTLink(meal)" frameborder="0"></iframe>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Ingredients</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let ingredient of ingredients; let index = index">
+        <ion-label size="6">
+          {{ ingredient }}
+        </ion-label>
+        <ion-label size="6">
+          {{ measures[index] }}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+</ng-container>
